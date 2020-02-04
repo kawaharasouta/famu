@@ -90,3 +90,5 @@ func main() {
 func usage() {
 	fmt.Println("usage: $ famu [nes file]")
 }
+
+
