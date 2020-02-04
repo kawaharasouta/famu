@@ -16,3 +16,6 @@
 
 # sample ROM
 sample.nes
+
+# swp
+*.swp
