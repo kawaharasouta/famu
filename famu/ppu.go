@@ -14,13 +14,13 @@ type Ppu struct {
 //	isLowerAddr bool   // for 0x2006
 	PpuData uint8   //ppu mem data (0x2007)
 
-	cycle       uint64
-	vram        Mem
-	bus         *Bus
-	renderer    *Renderer
+//	cycle       uint64
+//	vram        Mem
+//	bus         *Bus
+//	renderer    *Renderer
 
 	// Sprite RAM
-	spriteBuffer [64]*Sprite
-	spriteRam Mem
-	vramBuf byte
+//	spriteBuffer [64]*Sprite
+//	spriteRam Mem
+//	vramBuf byte
 }

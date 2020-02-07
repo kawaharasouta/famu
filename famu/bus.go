@@ -1,4 +1,4 @@
-package nes
+package famu
 
 type Bus struct {
 	cpu *Cpu

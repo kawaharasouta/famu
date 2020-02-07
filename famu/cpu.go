@@ -1,15 +1,14 @@
 package famu
 
 import (
-	"fmt"
 )
 
 type Cpu struct {
-	A  uint8		//accumulator
-	X  uint8		//Index register
-	Y  uint8		//Index register
-	S  uint8		//Stack pointer
-	P  uint8		//Status register
+	A  byte		//accumulator
+	X  byte		//Index register
+	Y  byte		//Index register
+	S  byte		//Stack pointer
+	P  byte		//Status register
 	PC uint16		//Program counter
 
 	cycle uint64
