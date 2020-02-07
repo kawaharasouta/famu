@@ -16,7 +16,7 @@ const (
 
 func main() {
 
-	fmt.Println(len(os.Args))
+	//fmt.Println(len(os.Args))
 	//arg1 := os.Args[0]
 	////message := os.Sprintf("%s, %s", arg1, arg2)
 	//fmt.Println(arg1, arg2)

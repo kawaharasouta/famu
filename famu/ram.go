@@ -1,11 +1,14 @@
 package famu
 
 type Mem interface {
-	load(addr uint8) byte
-	store(addr uint8, b byte)
+	load(addr uint16) byte
+	store(addr uint16, b byte)
 	slice(begin int, end int) []byte
 }
 
 type Ram struct {
 	data []byte
 }
+
+
+
