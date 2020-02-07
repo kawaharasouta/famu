@@ -5,15 +5,15 @@ import (
 )
 
 type regs struct {
-	A  uint8
-	X  uint8
-	Y  uint8
-	S  uint8
-	P  uint8
-	PC uint16
+	A  uint8		//accumulator
+	X  uint8		//Index register
+	Y  uint8		//Index register
+	S  uint8		//Stack pointer
+	P  uint8		//Status register
+	PC uint16		//Program counter
 }
 
-const ( //state register
+const ( //Status register
 	Carry    = 0x01
 	Zero     = 0x02
 	Irq      = 0x04
