@@ -1,16 +1,18 @@
 package famu
 
 import (
-	"os"
+	"fmt"
 )
 
-type regs struct {
+type Cpu struct {
 	A  uint8		//accumulator
 	X  uint8		//Index register
 	Y  uint8		//Index register
 	S  uint8		//Stack pointer
 	P  uint8		//Status register
 	PC uint16		//Program counter
+	cycle uint64
+	irq func()
 }
 
 const ( //Status register
