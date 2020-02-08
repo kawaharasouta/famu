@@ -2,16 +2,9 @@ package main
 import (
 	"fmt"
 	"os"
-	"io/ioutil"
-	"bytes"
+//	"bytes"
 
 	"github.com/kawaharasouta/famu/famu"
-)
-
-const (
-	nes_header = 0x0010
-	PRG_unit = 0x4000
-	CHR_unit = 0x2000
 )
 
 func main() {
@@ -22,21 +15,12 @@ func main() {
 	}
 	filepath := os.Args[1]
 
-	rom, err := ioutil.ReadFile(filepath)
-	if err != nil || !bytes.HasPrefix(rom, []byte{0x4e, 0x45, 0x53, 0x1a}) {
-		//fmt.Fprintf(os.Stderr, "Failed to readfile: %s\n", err)
-		fmt.Fprintf(os.Stderr, "Failed to readfile\n")
+	c, err := famu.NewCassette(filepath)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Cassette error\n")
 	}
-
-	PRG_size := rom[4]
-	CHR_size := rom[5]
-
-	CHR_start := nes_header + int(PRG_size) * PRG_unit		//(top + size * 16KB)
-	CHR_end := CHR_start + int(CHR_size) * CHR_unit
-	sprites_num := int(CHR_size) * CHR_unit / 16
-
-	fmt.Println(CHR_start)
-	fmt.Println(CHR_end)
+	rom := famu.ChrRom(c)
+	sprites_num := len(rom) /  16
 	fmt.Println(sprites_num)
 
 	sprites := make([]famu.Sprite, 0)
@@ -45,8 +29,7 @@ func main() {
 		j = 0
 		n = 0
 	)
-	cur := CHR_start
-	fmt.Println(rom[cur+1])
+	cur := 0
 
 	for	n = 0; n < sprites_num; n++ {
 		sprites = append(sprites, famu.Sprite{})
@@ -57,7 +40,7 @@ func main() {
 				}
 			}
 		}
-		fmt.Println(sprites[n])
+		//fmt.Println(sprites[n])
 		cur += 0x10
 	}
 

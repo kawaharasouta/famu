@@ -3,7 +3,7 @@ package famu
 type Bus struct {
 	cpu *Cpu
 	ppu *Ppu
-	rom []byte
+	cassette []byte
 	wram Mem
 	vram Mem
 }
