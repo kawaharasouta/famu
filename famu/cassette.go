@@ -44,10 +44,10 @@ func NewCassette(filepath string) (*Cassette, error) {
 }
 
 
-type Rom interface {
-	PrgRom() []byte
-	ChrRom() []byte
-}
+//type Rom interface {
+//	PrgRom() []byte
+//	ChrRom() []byte
+//}
 func PrgRom(c *Cassette) []byte {
 	return c.prgRom
 }
