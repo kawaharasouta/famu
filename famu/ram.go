@@ -1,13 +1,9 @@
 package famu
 
-import (
-	"fmt"
-)
-
 type Mem interface {
-	load(addr uint16)
+	load(addr uint16) byte
 	store(addr uint16, b byte)
-	slice(begin int, end int)
+	slice(begin int, end int) []byte
 }
 
 
@@ -15,20 +11,19 @@ type Mem interface {
 type Ram struct {
 	data []byte
 }
-
 func NewRam(size int) (Mem, error) {
 	return &Ram {
 		data:make([]byte, size),
 	}, nil
 }
-
-func (r *Ram) load(addr uint16) {
-	fmt.Println("load\n")
+func (r *Ram) load(addr uint16) byte {
+	return  r.data[addr]
 }
 func (r *Ram) store(addr uint16, b byte) {
-	fmt.Println("store\n")
+	r.data[addr] = b
 }
-func (r *Ram) slice(begin int, end int) {
-	fmt.Println("slice\n")
+func (r *Ram) slice(begin int, end int) []byte {
+	return r.data[begin:end]
 }
+
 

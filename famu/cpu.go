@@ -1,7 +1,6 @@
 package famu
 
-import (
-)
+import "fmt"
 
 type Cpu struct {
 	A  byte		//accumulator
@@ -52,5 +51,12 @@ func NewCpu(bus *Bus) *Cpu{
 
 
 
-
-
+/* exec */
+func exec(inst, ope, mode string) {
+	switch inst {
+	case "lda":
+		fmt.Println("lda\n")
+	default:
+		fmt.Println("no match instruction.\n")
+	}
+}
