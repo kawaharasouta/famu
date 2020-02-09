@@ -14,6 +14,16 @@ const (
 	CHR_unit = 0x2000
 )
 
+type Rom interface {
+	PrgRom() []byte
+	ChrRom() []byte
+}
+func (c *Cassette) PrgRom() []byte {
+	return c.prgRom
+}
+func (c *Cassette) ChrRom() []byte {
+	return c.chrRom
+}
 
 type Cassette struct {
 	prgRom []byte
@@ -21,7 +31,7 @@ type Cassette struct {
 }
 
 
-func NewCassette(filepath string) (*Cassette, error) {
+func NewCassette(filepath string) (Rom, error) {
 	rom, err := ioutil.ReadFile(filepath)
 	if err != nil || !bytes.HasPrefix(rom, []byte{0x4e, 0x45, 0x53, 0x1a}) {
 		//fmt.Fprintf(os.Stderr, "Failed to readfile: %s\n", err)
@@ -44,13 +54,3 @@ func NewCassette(filepath string) (*Cassette, error) {
 }
 
 
-//type Rom interface {
-//	PrgRom() []byte
-//	ChrRom() []byte
-//}
-func PrgRom(c *Cassette) []byte {
-	return c.prgRom
-}
-func ChrRom(c *Cassette) []byte {
-	return c.chrRom
-}

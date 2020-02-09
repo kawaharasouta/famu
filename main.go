@@ -19,7 +19,7 @@ func main() {
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Cassette error\n")
 	}
-	rom := famu.ChrRom(c)
+	rom := c.ChrRom()
 	sprites_num := len(rom) /  16
 	fmt.Println(sprites_num)
 

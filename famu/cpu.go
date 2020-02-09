@@ -12,17 +12,45 @@ type Cpu struct {
 	PC uint16		//Program counter
 
 	cycle uint64
+	bus *Bus
 	irq func()
 }
 
 const ( //Status register
-	Carry    = 0x01
-	Zero     = 0x02
-	Irq      = 0x04
-	Decimal  = 0x08
-	Break    = 0x10
-	Reserved = 0x20
-	Overflow = 0x40
 	Negative = 0x80
+	Overflow = 0x40
+	Reserved = 0x20
+	Break    = 0x10
+	Decimal  = 0x08
+	Irq      = 0x04
+	Zero     = 0x02
+	Carry    = 0x01
 )
+
+
+func NewCpu(bus *Bus) *Cpu{
+	return &Cpu{
+		bus:bus,
+	}
+}
+
+
+
+/* status set */
+
+
+
+/* status unset */
+
+
+
+/* status isset* /
+
+
+
+/* instruction */
+
+
+
+
 
