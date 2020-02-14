@@ -7,3 +7,13 @@ type Bus struct {
 	wram Mem
 	vram Mem
 }
+
+func NewBus(wram Mem, PrgRom []byte) *Bus {
+	return &Bus {
+		wram: wram,
+		cassette: PrgRom,
+	}
+}
+
+
+
