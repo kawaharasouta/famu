@@ -43,3 +43,13 @@ func (b *Bus) Load(addr uint16) byte {
 
 	return 0
 }
+func (b *Bus) Store(addr uint16, data byte) {
+	if addr < 0x0800 {	//wram
+		b.wram.store(addr, data)
+	}	else if addr < 0x1fff {
+		b.wram.store(addr % 0x0800, data)
+	}	else if addr < 0x8000 {		//atodeiroiro
+	}	else if addr < 0xffff {		//romhakakikomisinaiyo
+	}
+
+}
