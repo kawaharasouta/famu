@@ -47,11 +47,45 @@ func NewCpu(bus *Bus) *Cpu{
 
 
 
+/* warikomi */
+
+func nmi() {
+
+}
+
+func reset() { // sample ha koredake toriaezu yaruyo
+
+}
+
+func irq() {
+
+}
+
+func brk() {
+
+}
+
 /* instruction */
 
 
 
-/* exec */
+
+/* execute */
+func (c *Cpu) fetch() byte {
+	addr := c.PC
+	c.PC++
+	return c.bus.Load(addr)
+}
+
+func decode(op byte) (func(uint16), func()) {
+	var (
+		inst func(uint16)
+		addr_mode func()
+	)
+
+	return inst, addr_mode
+}
+
 func exec(inst, ope, mode string) {
 	switch inst {
 	case "lda":
