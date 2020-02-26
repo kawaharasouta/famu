@@ -1,6 +1,6 @@
 package famu
 
-import "fmt"
+//import "fmt"
 
 type Cpu struct {
 	A  byte		//accumulator
@@ -47,27 +47,38 @@ func NewCpu(bus *Bus) *Cpu{
 
 
 
+/* instruction */
+
+
+
+
+func (c *Cpu) jmp(addr uint16) {
+	c.PC = addr
+}
+
+
+
+
+
 /* warikomi */
 
 func (c *Cpu) nmi() {
 
 }
-
 func (c *Cpu) reset() { // sample ha koredake toriaezu yaruyo
+	//push toka iroiro wakarannkedo
+
+
+	c.jmp(c.bus.Loadw(0xfffc))
+
 
 }
-
 func (c *Cpu) irq() {
 
 }
-
 func (c *Cpu) brk() {
 
 }
-
-/* instruction */
-
-
 
 
 /* execute */
@@ -77,7 +88,7 @@ func (c *Cpu) fetch() byte {
 	return c.bus.Load(addr)
 }
 
-func decode(op byte) (func(uint16), func()) {
+func (c *Cpu) decode(op byte) (func(uint16), func()) {
 	var (
 		inst func(uint16)
 		addr_mode func()
@@ -86,11 +97,21 @@ func decode(op byte) (func(uint16), func()) {
 	return inst, addr_mode
 }
 
-func exec(inst, ope, mode string) {
-	switch inst {
-	case "lda":
-		fmt.Println("lda\n")
-	default:
-		fmt.Println("no match instruction.\n")
+func (c *Cpu) exec(inst func(uint16), addr_mode func()) {
+	//switch inst {
+	//case "lda":
+	//	fmt.Println("lda\n")
+	//default:
+	//	fmt.Println("no match instruction.\n")
+	//}
+}
+
+func run(c *Cpu) {
+	c.reset()
+
+	for {
+		op := c.fetch()
+		inst, addr_mode := c.decode(op)
+		c.exec(inst, addr_mode)
 	}
 }
