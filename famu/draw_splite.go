@@ -103,8 +103,6 @@ func Sdl_init(sprites []Sprite, sprites_num int) int {
 	renderer.Present()
 	sdl.PollEvent()
 
-	for ;; {
-	}
 
 	return 0
 }
