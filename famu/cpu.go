@@ -12,7 +12,7 @@ type Cpu struct {
 
 	cycle uint64
 	bus *Bus
-	irq func()
+	intrrupt func()
 }
 
 const ( //Status register
@@ -49,19 +49,19 @@ func NewCpu(bus *Bus) *Cpu{
 
 /* warikomi */
 
-func nmi() {
+func (c *Cpu) nmi() {
 
 }
 
-func reset() { // sample ha koredake toriaezu yaruyo
+func (c *Cpu) reset() { // sample ha koredake toriaezu yaruyo
 
 }
 
-func irq() {
+func (c *Cpu) irq() {
 
 }
 
-func brk() {
+func (c *Cpu) brk() {
 
 }
 

@@ -53,3 +53,9 @@ func (b *Bus) Store(addr uint16, data byte) {
 	}
 
 }
+
+func (b *Bus) Loadw(addr uint16) uint16 {
+	upper := uint16(b.Load(addr + 1))
+	bottom := uint16(b.Load(addr))
+	return upper << 8 | bottom
+}
